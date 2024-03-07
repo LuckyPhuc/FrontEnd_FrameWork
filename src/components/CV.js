@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
@@ -8,6 +10,8 @@ import { House } from "react-bootstrap-icons";
 import { StarFill } from "react-bootstrap-icons";
 
 function CV() {
+  const [firstName, setFirstName] = useState("Phúc");
+  const [lastName, setLastName] = useState("Hoàng");
   return (
     <div className="CV">
       <div className="container border p-5 main ">
@@ -66,8 +70,8 @@ function CV() {
             <div className="row mx-3">
               <div className="container">
                 <header className="name border-bottom">
-                  <h1>HOÀNG</h1>
-                  <h1>PHÚC</h1>
+                  <h1>{lastName}</h1>
+                  <h1>{firstName}</h1>
                   <div className="position">
                     <h5>BACKEND DEVELOPER</h5>
                   </div>
