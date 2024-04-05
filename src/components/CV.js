@@ -1,20 +1,17 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 //icon
-import { Telephone } from "react-bootstrap-icons";
-import { Envelope } from "react-bootstrap-icons";
-import { House } from "react-bootstrap-icons";
-import { StarFill } from "react-bootstrap-icons";
+import { Telephone, Envelope, House, StarFill } from "react-bootstrap-icons";
 
-function CV() {
-  const [firstName, setFirstName] = useState("Phúc");
-  const [lastName, setLastName] = useState("Hoàng");
+import { forwardRef } from "react";
+
+const CV = forwardRef((props, ref) => {
   return (
-    <div className="CV">
-      <div className="container border p-5 main ">
+    <div className="CV" ref={ref}>
+      <div className="container p-5 main ">
         <div className="row">
           <div className="col-4 border-end">
             <img className="avatar" src="img/avatar.jpg" alt="" />
@@ -27,19 +24,19 @@ function CV() {
                   <span className="detail__icon">
                     <Telephone />
                   </span>
-                  <span>0773440062</span>
+                  <span>{props.phone}</span>
                 </div>
                 <div className="detail__in4">
                   <span className="detail__icon">
                     <Envelope />
                   </span>
-                  <span>bmtck0000@gmail.com</span>
+                  <span>{props.gmail}</span>
                 </div>
                 <div className="detail__in4">
                   <span className="detail__icon">
                     <House />
                   </span>
-                  <span>Hẻm 189 Trần Quý Cáp, Tp.Buôn Ma Thuột</span>
+                  <span>{props.address}</span>
                 </div>
               </div>
               <div className="detail__footer">
@@ -67,11 +64,12 @@ function CV() {
             </div>
           </div>
           <div className="col-8 ">
+            <div className="btn float-right"></div>
             <div className="row mx-3">
               <div className="container">
                 <header className="name border-bottom">
-                  <h1>{lastName}</h1>
-                  <h1>{firstName}</h1>
+                  <h1>{props.lastName}</h1>
+                  <h1>{props.firstName}</h1>
                   <div className="position">
                     <h5>BACKEND DEVELOPER</h5>
                   </div>
@@ -89,7 +87,7 @@ function CV() {
                       ứng dụng.
                     </p>
                   </header>
-                  <body>
+                  <div>
                     <h3>KĨ NĂNG</h3>
                     <ul>
                       <li>
@@ -253,7 +251,7 @@ function CV() {
                       </li>
                     </ul>
                     <h5></h5>
-                  </body>
+                  </div>
                 </div>
               </div>
             </div>
@@ -262,6 +260,5 @@ function CV() {
       </div>
     </div>
   );
-}
-
+});
 export default CV;
